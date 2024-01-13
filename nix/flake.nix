@@ -82,13 +82,13 @@
           xorg.xcbutilkeysyms
           xorg.xcbutilwm # contains xcb-ewmh among others
         ]
-        ++ lib.optionals stdenv.isDarwin [
+        ++ lib.optionals stdenv.isDarwin (with pkgs.darwin.apple_sdk.frameworks; [
           Cocoa
           CoreGraphics
           Foundation
           libiconv
           UserNotifications
-        ];
+        ]);
 
       libPath = lib.makeLibraryPath (with pkgs; [libGL vulkan-loader]);
 
